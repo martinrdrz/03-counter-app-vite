@@ -1,24 +1,39 @@
-import { PropTypes } from "prop-types";
+import { useState } from 'react';
+import { PropTypes } from 'prop-types';
+
+// export const CounterApp = ({ value }) => {
+//   const handleAdd = (event) => {
+//    console.log(event);
+//    value = value + 1;
+//   };
 
 export const CounterApp = ({ value }) => {
-  const handleAdd = (event) => {
-    console.log(event);
-    value = value + 1;
-  };
+    const [counter, setCounter] = useState(value);
 
-  return (
-    <>
-      <h1>CounterApp</h1>
-      <h2>{value}</h2>
-      <button onClick={handleAdd}>+1</button>
-    </>
-  );
+    const handleAdd = () => {
+        setCounter(counter + 1);
+    };
+    const handleSubstract = () => {
+        setCounter(counter - 1);
+    };
+    const handleReset = () => {
+        setCounter(0);
+    };
+    return (
+        <>
+            <h1>CounterApp</h1>
+            <h2>{counter}</h2>
+            <button onClick={handleAdd}>+1</button>
+            <button onClick={handleSubstract}>-1</button>
+            <button onClick={handleReset}>Reset</button>
+        </>
+    );
 };
 
 CounterApp.propTypes = {
-  value: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
 };
 
 CounterApp.dafaultProps = {
-  value: 0,
+    value: 0,
 };
