@@ -1,4 +1,5 @@
-import { retornaArreglo } from '../../src/base-pruebas/08-imp-exp';
+import { getHeroeById, getHeroesByOwner } from '../../src/base-pruebas/08-imp-exp';
+import heroes from '../../src/data/heroes';
 
 // {
 //         id: 1,
@@ -21,11 +22,11 @@ describe('Pruebas en 07-deses-arr', () => {
 
     test('getHeroesByOwner debe retornar los heroes de un owner determinado', () => {
         const owner = 'DC';
-        const heroes = getHeroesByOwner(owner);
-        expect(heroes).toBe(3);
-        expect(heroes).toEqual(
+        const resHeroes = getHeroesByOwner(owner);
+        expect(resHeroes.length).toBe(3);
+        expect(resHeroes).toEqual(
             heroes.filter((heroe) => {
-                heroe.owner === owner;
+                return heroe.owner === owner;
             })
         );
     });
